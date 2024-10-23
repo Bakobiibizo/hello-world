@@ -164,7 +164,7 @@ def _generate_apidocs_plugins(executor: ThreadPoolExecutor) -> None:
     """Generate API docs for cyrpto plugins."""
     if not PLUGIN_DIR.exists():
         return
-    
+
     for plugin in PLUGIN_DIR.iterdir():
         plugin_name = plugin.name
         plugin_module_name = plugin_name.replace("-", "_")
