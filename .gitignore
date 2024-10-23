@@ -402,6 +402,7 @@ packages/valory/skills/register_reset_recovery_abci
 packages/valory/skills/slashing_abci
 packages/valory/skills/offend_abci
 packages/valory/skills/offend_slash_abci
+packages/valory/skills/*/
 
 .vscode/
 

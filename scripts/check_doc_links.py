@@ -101,6 +101,10 @@ def check_file(
         if not url.startswith("https") and url not in http_skips:
             http_links.append((md_file, url))
 
+        # The autonolas doc site seems to have a bot redirect loop that throws errors
+        if "https://docs.autonolas.network/open-autonomy" in url:
+            continue
+        
         # Check for url skips
         if url in url_skips:
             continue
@@ -118,6 +122,7 @@ def check_file(
         except (
             requests.exceptions.RetryError,
             requests.exceptions.ConnectionError,
+            requests.exceptions.TooManyRedirects,
         ) as e:
             broken_links.append({"url": url, "status_code": e})
 
@@ -162,7 +167,10 @@ def main() -> None:  # pylint: disable=too-many-locals
         futures = []
         for md_file in all_md_files:
             print(f"Checking {str(md_file)}...")
-            futures.append(executor.submit(check_file, session, md_file))
+            try:
+                futures.append(executor.submit(check_file, session, md_file))
+            except Exception as e:
+                raise RuntimeError(f"Error running thread pool: {e}") from e
 
         # Awaiting for results is blocking
         print("Awaiting for results...")
