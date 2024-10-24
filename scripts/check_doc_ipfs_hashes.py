@@ -25,7 +25,6 @@ import argparse
 import itertools
 import re
 import sys
-import os
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -60,7 +59,7 @@ HASH_SKIPS = [
 
 
 def read_file(filepath: str) -> str:
-    """Loads a file into a string"""    
+    """Loads a file into a string"""
     with open(filepath, "r", encoding="utf-8") as file_:
         file_str = file_.read()
     return file_str
@@ -354,7 +353,9 @@ def check_ipfs_hashes(  # pylint: disable=too-many-locals,too-many-statements
     if all_py_files[0].exists():
         for py_file in all_py_files:
             content = read_file(str(py_file))
-            for match in [m.groupdict() for m in re.finditer(FULL_PACKAGE_REGEX, content)]:
+            for match in [
+                m.groupdict() for m in re.finditer(FULL_PACKAGE_REGEX, content)
+            ]:
                 full_package = match["full_package"]
                 py_hash = match["hash"]
                 expected_hash = package_manager.get_hash_by_package_line(
@@ -421,22 +422,22 @@ def check_ipfs_hashes(  # pylint: disable=too-many-locals,too-many-statements
             with open(str(package_list_file), "w", encoding="utf-8") as p_file:
                 p_file.write(content)
             print(f"Fixed some IPFS hashes in doc file {package_list_file}")
-    
+
         if fix and errors:
             raise ValueError(
                 "There were some errors while fixing IPFS hashes. Check the logs."
             )
-    
+
         if not fix and (hash_mismatches or errors):
             print("There are mismatching IPFS hashes in the docs.")
             sys.exit(1)
-    
+
         if matches == 0:
             print(
                 "No commands were found in the docs. The command regex is probably outdated."
             )
             sys.exit(1)
-    
+
         print("Checking doc IPFS hashes finished successfully.")
 
 

@@ -1,6 +1,6 @@
 [MASTER]
 ignore-patterns=.*_pb2.py,contract_dispatcher.py,test_abci_messages.py,test_tendermint_messages.py
-ignore=packages/valory/protocols,packages/valory/connections
+ignore=packages/valory/protocols,packages/valory/connections,scripts/mine
 
 [MESSAGES CONTROL]
 disable=C0103,R0801,C0301,C0201,C0204,C0209,W1203,C0302,R1735,R1729,W0511

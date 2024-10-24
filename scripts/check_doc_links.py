@@ -104,7 +104,7 @@ def check_file(
         # The autonolas doc site seems to have a bot redirect loop that throws errors
         if "https://docs.autonolas.network/open-autonomy" in url:
             continue
-        
+
         # Check for url skips
         if url in url_skips:
             continue
