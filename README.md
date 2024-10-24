@@ -6,7 +6,7 @@ Example of an autonomous service using the [Open Autonomy](https://docs.autonola
 
 - Python `>=3.10`
 - [Tendermint](https://docs.tendermint.com/v0.34/introduction/install.html) `==0.34.19`
-- [Pipenv](https://pipenv.pypa.io/en/latest/installation/) `>=2021.x.xx`
+- [Pipenv](https://pipenv.pypa.io/en/latest/installation.html) `>=2021.x.xx`
 - [Docker Engine](https://docs.docker.com/engine/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - The [Open Autonomy](https://docs.autonolas.network/open-autonomy/guides/set_up/#set-up-the-framework) framework
@@ -49,9 +49,17 @@ Example of an autonomous service using the [Open Autonomy](https://docs.autonola
 
       export ALL_PARTICIPANTS='["0xAddress1", "0xAddress2", "0xAddress3", "0xAddress4"]'
 
+- You can generate the ALL_PARTIICPANTS string using this command:
+
+      python ../scripts/print_all_participants.py keys.json
+
 - Build the deployment (Docker Compose):
 
       autonomy deploy build ./keys.json -ltm
+
+- Set the file permissions for the service
+
+      sudo chmod -R 777 .
 
 - Run the deployment:
 
