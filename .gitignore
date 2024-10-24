@@ -416,3 +416,7 @@ temp/
 logs.db
 agent/
 ethereum_private_key.txt
+scripts/mine
+hello_world
+hello_world_service
+packages/valory/agents/hello_world/keys.json

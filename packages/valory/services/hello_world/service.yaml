@@ -7,7 +7,7 @@ license: Apache-2.0
 fingerprint:
   README.md: bafybeiapubcoersqnsnh3acia5hd7otzt7kjxekr6gkbrlumv6tkajl6jm
 fingerprint_ignore_patterns: []
-agent: valory/hello_world:0.1.0:bafybeihtmp45mbfs5tyzrgxfoimh552on6dif42ifqidifait3ej2m5zvq
+agent: valory/hello_world:0.1.0:bafybeigp3f5douguuygh7fkckklslbxcdx5ppew6umu2vagtekmgdhtooq
 number_of_agents: 4
 deployment: {}
 ---
@@ -18,7 +18,7 @@ extra:
   params_args:
     args:
       setup: &id001
-        all_participants: ${ALL_PARTICIPANTS:list:["0x0000000000000000000000000000000000000000"]}
+        all_participants: ${ALL_PARTICIPANTS:list:["0x251a495A738aA03eC64Cb17ee46dFC05C073e7f5", "0x160CA5326022820CE97c38169477e76e62f06d54", "0xaCBa965339DC5defF75D31f1be9499C186166c6B", "0x293ccA84873983A93990F87C967FC8d35982f867"]}
         safe_contract_address: ${SAFE_CONTRACT_ADDRESS:str:0x0000000000000000000000000000000000000000}
         consensus_threshold: ${CONSENSUS_THRESHOLD:int:null}
 public_id: valory/hello_world_abci:0.1.0
@@ -31,7 +31,8 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
-        hello_world_message: ${HELLO_WORLD_STRING_0:str:HELLO_WORLD! (from Agent 0)}
+        owner: ${ALL_PARTICIPANTS[0]:str:0x0000000000000000000000000000000000000000}
+        hello_world_message: Hello world! The owner of this agent is ${OWNER:str:0x0000000000000000000000000000000000000000}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002
@@ -43,7 +44,8 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
-        hello_world_message: ${HELLO_WORLD_STRING_1:str:HELLO_WORLD! (from Agent 1)}
+        owner: ${ALL_PARTICIPANTS[1]:str:0x0000000000000000000000000000000000000000}
+        hello_world_message: Hello world! The owner of this agent is ${OWNER:str:0x0000000000000000000000000000000000000000}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002
@@ -55,7 +57,8 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
-        hello_world_message: ${HELLO_WORLD_STRING_2:str:HELLO_WORLD! (from Agent 2)}
+        owner: ${ALL_PARTICIPANTS[2]:str:0x0000000000000000000000000000000000000000}
+        hello_world_message: Hello world! The owner of this agent is ${OWNER:str:0x0000000000000000000000000000000000000000}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002
@@ -67,7 +70,8 @@ type: skill
         share_tm_config_on_startup: ${SHARE_TM_CONFIG_ON_STARTUP:bool:false}
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
-        hello_world_message: ${HELLO_WORLD_STRING_3:str:HELLO_WORLD! (from Agent 3)}
+        owner: ${ALL_PARTICIPANTS[3]:str:0x0000000000000000000000000000000000000000}
+        hello_world_message: Hello world! The owner of this agent is ${OWNER:str:0x0000000000000000000000000000000000000000}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002
